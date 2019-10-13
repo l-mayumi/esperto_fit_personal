@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.4'
+#ruby '2.6.4'
 #Devise
 gem 'devise', '~> 4.7.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -63,6 +63,7 @@ end
 group :test do
   gem 'simplecov', require: false
   gem 'webmock'
+  gem 'poltergeist'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

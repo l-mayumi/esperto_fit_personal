@@ -43,7 +43,32 @@ feature 'Customer can register into system' do
     click_on 'Enviar'
    
     #Assert
+    expect(page.status_code).to eq 200
     expect(Profile.last.first_name).to eq 'Mauricio'
     expect(Profile.last.work_document).to be_falsey
+  end
+
+  scenario 'second: register as customer and should fill in all fields' do
+    #Arrange
+    list_gyms
+    unit = create(:unit)
+    customer = create(:customer, unit: unit)
+    list_plans(unit.ex_gym_ref)
+    #Act
+    login_as customer, scope: :account
+    visit root_path
+    save_page
+    fill_in 'Nome', with: ''
+    fill_in 'Sobrenome', with: ''
+    fill_in 'Endereço', with: ''
+    fill_in 'Data de Nascimento', with: ''
+    fill_in 'Contato', with: ''
+    select 'male', from: ''    
+    fill_in 'Apelido', with: ''
+    fill_in 'Método de Pagamento', with: ''
+    click_on 'Enviar'
+   
+    #Assert
+    expect(page.status_code).to eq 200
   end
 end

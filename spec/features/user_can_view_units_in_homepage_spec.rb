@@ -27,7 +27,8 @@ feature 'Customer view all available units' do
     within('div.academia-1') do
       click_on 'Cadastrar Nesta Unidade'
     end
-    #byebug
+
+    expect(page.status_code).to eq 200
     within('div.academia-1') do
       expect(page).to have_content('Está é a sua Unidade')
       expect(page).not_to have_link('Cadastrar Nesta Unidade')

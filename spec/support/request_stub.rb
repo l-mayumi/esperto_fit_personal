@@ -53,7 +53,14 @@ module RequestStub
     json_response = JSON.parse(
       File.read(Rails.root.join('spec', 'support', "#{filename}")
     ), symbolize_names: true)
+    
     stub_request(:get, url).
+      with(
+        headers: {
+      'Accept'=>'*/*',
+      'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+      'User-Agent'=>'Ruby'
+        }).
       to_return(status: 200, body: json_response)
   end
 
