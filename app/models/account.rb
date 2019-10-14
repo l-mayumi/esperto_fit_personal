@@ -41,12 +41,12 @@ class Account < ApplicationRecord
     response = EspertoAcademy.client.get do |req|
       req.url "clients/consult_cpf/#{self.document}"
     end
+
+    json_response = JSON.parse(response.body, symbolize_names: true)
     return false if response.status == 404
 
-    response.body[:status] == 'inactive' 
+    json_response[:status] == 'inactive' 
   rescue Faraday::ConnectionFailed
-    return false
-  rescue Faraday::ParsingError
     return false
   end
 

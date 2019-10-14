@@ -12,9 +12,9 @@ feature 'Customer view all available units' do
     visit root_path
     
     #Assert
-    expect(page).to have_content('Academia 01')
-    expect(page).to have_content('Academia 02')
-    expect(page).to have_content('Academia 03')
+    expect(page).to have_content("Academia Paulista")
+    expect(page).to have_content("Academia Consolação")
+    expect(page).to have_content("Academia Madalena")
   end
 
   scenario 'and can sign up to a unity' do
@@ -28,7 +28,6 @@ feature 'Customer view all available units' do
       click_on 'Cadastrar Nesta Unidade'
     end
 
-    expect(page.status_code).to eq 200
     within('div.academia-1') do
       expect(page).to have_content('Está é a sua Unidade')
       expect(page).not_to have_link('Cadastrar Nesta Unidade')

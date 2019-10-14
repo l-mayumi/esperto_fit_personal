@@ -4,15 +4,15 @@ module RequestStub
     url      = 'http://academy.com.br/api/v1/clients/consult_cpf/99999999999'
     json_response = File.read(Rails.root.join('spec', 'support', "#{filename}"))
 
-    stub_request(:get, url)
-      .with(
+    stub_request(:get, url).
+      with(
         headers: {
-          'Accept'=>'*/*',
-          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-          'User-Agent'=>'Faraday v0.15.4'
-           }
-      )
-      .to_return(status: 302, body: json_response, headers:  {'Content-Type': 'application/json'})
+        'Accept'=>'*/*',
+        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+        'Content-Type'=>'application/json',
+        'User-Agent'=>'Faraday v0.17.0'
+        }).
+    to_return(status: 302, body: json_response, headers:  {'Content-Type': 'application/json'})
   end
 
   def cpf_status_inactive
@@ -20,15 +20,15 @@ module RequestStub
     url      = 'http://academy.com.br/api/v1/clients/consult_cpf/88888888888'
     json_response = File.read(Rails.root.join('spec', 'support', "#{filename}"))
 
-    stub_request(:get, url)
-      .with(
+    stub_request(:get, url).
+      with(
         headers: {
-          'Accept'=>'*/*',
-          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-          'User-Agent'=>'Faraday v0.15.4'
-           }
-      )
-      .to_return(status: 302, body: json_response, headers:  {'Content-Type': 'application/json'})
+        'Accept'=>'*/*',
+        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+        'Content-Type'=>'application/json',
+        'User-Agent'=>'Faraday v0.17.0'
+        }).
+      to_return(status: 302, body: json_response, headers:  {'Content-Type': 'application/json'})
   end
 
   def cpf_status_empty
@@ -39,12 +39,12 @@ module RequestStub
     stub_request(:get, url)
       .with(
         headers: {
-          'Accept'=>'*/*',
-          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-          'User-Agent'=>'Faraday v0.15.4'
-           }
-      )
-      .to_return(status: 404, body: 'Não encontrado' , headers:  {})
+        'Accept'=>'*/*',
+        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+        'Content-Type'=>'application/json',
+        'User-Agent'=>'Faraday v0.17.0'
+        }).
+      to_return(status: 404, body: 'Não encontrado' , headers:  {})
   end
 
   def list_gyms

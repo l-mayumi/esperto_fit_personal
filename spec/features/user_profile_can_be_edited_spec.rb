@@ -18,7 +18,7 @@ feature 'User profile can be edited' do
     #Assert
     expect(page).to have_css('h3', text: "Conta de #{profile.nickname}")
     expect(page).to have_link('Editar Cadastro')
-    expect(page).to have_text(profile.last_name)
+    expect(page).to have_text(profile.address)
   end
 
   scenario '2: edit account profile' do
