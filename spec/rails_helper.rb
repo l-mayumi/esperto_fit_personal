@@ -14,6 +14,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist
+Capybara.default_driver = :selenium_chrome
 
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 

@@ -12,7 +12,8 @@ class Gym
     response = EspertoAcademy.client.get do |req|
       req.url 'gyms'
     end
-    return response.body.map { |gym| new(gym) } if response.status == 200
+    json_response = JSON.parse(response.body, symbolize_names: true)
+    return json_response.map { |gym| new(gym) } if response.status == 200
 
     []
   rescue Faraday::ConnectionFailed
